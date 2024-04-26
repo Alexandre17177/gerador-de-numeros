@@ -1,21 +1,30 @@
-function sortear() {
+    function sortear() {
     let quantidade = parseInt(document.getElementById('quantidade').value);
     let de = parseInt(document.getElementById('de').value);
     let até = parseInt(document.getElementById('ate').value);
 
-    let sorteados = [];
 
+    let sorteados = [];
+    if ((de-até) > quantidade) {
     for (let i = 0;i < quantidade; i++) {
         let numero = gerarNumeroAleatorio(de, até);
         while (sorteados.includes(numero)) {
             numero = gerarNumeroAleatorio(de, até);
+            console.log("gerando numero");
         }
         sorteados.push(numero);
         console.log (sorteados)
     }
+} else {
+    alert ("erro: a quantidade de numeros e muito alta");
+}
+    if (de < até) {
     let resultado = document.getElementById('resultado')
     resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados}</label>`
     alterarStatusBotão();
+    } else {
+        alert ("erro: insira um numero minimo menor que o numero maximo!");
+    }
 }
 function gerarNumeroAleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
