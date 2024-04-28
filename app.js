@@ -5,7 +5,11 @@
 
 
     let sorteados = [];
-    if ((de-até) > quantidade) {
+    if (quantidade > (até-de + 1)) {
+        alert ("erro")
+        console.log (quantidade, de, até);
+        return;
+    }
     for (let i = 0;i < quantidade; i++) {
         let numero = gerarNumeroAleatorio(de, até);
         while (sorteados.includes(numero)) {
@@ -15,9 +19,6 @@
         sorteados.push(numero);
         console.log (sorteados)
     }
-} else {
-    alert ("erro: a quantidade de numeros e muito alta");
-}
     if (de < até) {
     let resultado = document.getElementById('resultado')
     resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados}</label>`
